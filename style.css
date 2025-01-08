@@ -1,25 +1,13 @@
-/* Variáveis de cores */
-:root {
-  --cor-primaria: #4CAF50;  /* Cor principal */
-  --cor-secundaria: #F44336;  /* Cor de alerta */
-  --cor-fundo: #f9f9f9;  /* Cor de fundo */
-  --cor-texto: #333;  /* Cor do texto */
-}
-
-/* Estilo global */
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--cor-fundo);
-  color: var(--cor-texto);
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Cabeçalho */
 header {
-  background-color: var(--cor-primaria);
-  color: white;
-  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 
 .header-container {
@@ -38,27 +26,46 @@ header {
   display: flex;
   list-style: none;
   gap: 1.5rem;
+  margin: 0;
 }
 
 .menu li {
   position: relative;
 }
 
+.dropdown:hover .submenu {
+  display: block;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0.5rem 1rem;
+}
+
+.submenu li {
+  margin: 0.5rem 0;
+}
+
 .consult-button {
-  background-color: var(--cor-secundaria);
-  color: white;
+  background-color: black;
+  color: #fff;
   padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
 }
 
-/* Cards de tratamentos */
 .tratamentos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
+  background-color: #f9f9f9;
 }
 
 .tratamento-card {
@@ -70,44 +77,18 @@ header {
 }
 
 .tratamento-card img {
-  width: 100%;
+  max-width: 100%;
   border-radius: 5px;
 }
 
 .detail-link {
-  color: var(--cor-primaria);
+  color: black;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 10px;
 }
 
-/* Formulário */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.input-field {
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.submit-button {
-  padding: 10px 20px;
-  background-color: var(--cor-secundaria);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Rodapé */
 footer {
-  background-color: #333;
+  background: black;
   color: white;
   padding: 2rem 1rem;
   text-align: center;
@@ -135,14 +116,4 @@ footer {
 .footer-links li {
   list-style: none;
   display: inline;
-}
-
-/* Mensagens de feedback */
-.alert-message {
-  padding: 10px;
-  background-color: #e0f7fa;
-  border: 1px solid #00796b;
-  color: #00796b;
-  border-radius: 5px;
-  margin-top: 20px;
 }
