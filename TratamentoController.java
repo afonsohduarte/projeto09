@@ -14,19 +14,24 @@ public class TratamentoController {
     @Autowired
     private TratamentoService tratamentoService;
 
-    @GetMapping("/tratamentos")
+    @GetMapping("/")
     public String listarTratamentos(Model model) {
-        model.addAttribute("tratamentos", tratamentoService.getAllTratamentos());
-        return "tratamentos";
+        List<Tratamento> tratamentos = tratamentoService.buscarTodosTratamentos();
+        model.addAttribute("tratamentos", tratamentos);
+        return "index";
     }
 
     @GetMapping("/tratamento/{id}")
     public String detalhesTratamento(@PathVariable Long id, Model model) {
-        Tratamento tratamento = tratamentoService.getTratamentoById(id);
-        if (tratamento != null) {
-            model.addAttribute("tratamento", tratamento);
-            return "tratamento-detalhes"; // Página detalhada
-        }
-        return "404"; // Página de erro
+        Tratamento tratamento = tratamentoService.buscarTratamentoPorId(id);
+        model.addAttribute("tratamento", tratamento);
+        return "tratamento";
+    }
+
+    @PostMapping("/contato")
+    public String enviarContato(String nome, String email, String mensagem, RedirectAttributes redirectAttributes) {
+        // Lógica de envio (e.g., salvar em banco ou enviar email)
+        redirectAttributes.addFlashAttribute("message", "Consulta agendada com sucesso!");
+        return "redirect:/";
     }
 }
