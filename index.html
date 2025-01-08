@@ -5,56 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clínica Estética</title>
   <link rel="stylesheet" href="/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <!-- Cabeçalho -->
   <header>
     <div class="header-container">
       <div class="logo">
         <img src="logo.png" alt="Logo da Clínica">
       </div>
-      <h1>Clínica Estética</h1>
       <ul class="menu">
-        <li><a href="#home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="#services">Serviços</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
-      <button class="consult-button" onclick="window.location.href='/agendar-consulta'">Agendar Consulta</button>
+      <button class="consult-button">Consultar</button>
     </div>
   </header>
 
   <!-- Seção de Tratamentos -->
   <section id="services" class="tratamentos">
     <h2>Tratamentos</h2>
-    <div th:each="tratamento : ${tratamentos}">
-      <div class="tratamento-card">
-        <img th:src="@{${tratamento.imagem}}" alt="Imagem do Tratamento">
-        <h3 th:text="${tratamento.titulo}"></h3>
-        <a th:href="@{/tratamento/{id}(id=${tratamento.id})}" class="detail-link">→</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Contato -->
-  <section id="contact">
-    <h3>Entre em Contato</h3>
-    <form action="/contato" method="POST" class="contact-form" onsubmit="return validateForm()">
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="nome" required class="input-field">
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required class="input-field">
-      
-      <label for="message">Mensagem:</label>
-      <textarea id="message" name="mensagem" rows="4" class="input-field"></textarea>
-      
-      <button type="submit" class="submit-button">Enviar</button>
-    </form>
-
-    <div th:if="${message}" class="alert-message">
-      <p th:text="${message}"></p>
+    
+    <!-- Exemplo de card de tratamento -->
+    <div th:each="tratamento : ${tratamentos}" class="tratamento-card">
+      <img th:src="@{/images/{tratamento.imagem}}" alt="Imagem do Tratamento">
+      <h3 th:text="${tratamento.titulo}"></h3>
+      <p th:text="${tratamento.descricao}"></p>
+      <a th:href="@{/tratamento/{id}(id=${tratamento.id})}" class="detail-link">→ Ver mais</a>
     </div>
   </section>
 
@@ -78,18 +55,5 @@
       </address>
     </div>
   </footer>
-
-  <script>
-    function validateForm() {
-      var name = document.getElementById("name").value;
-      var email = document.getElementById("email").value;
-      if (name == "" || email == "") {
-        alert("Por favor, preencha todos os campos.");
-        return false;
-      }
-      return true;
-    }
-  </script>
-
 </body>
 </html>
