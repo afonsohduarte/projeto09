@@ -1,70 +1,148 @@
+/* Variáveis de cores */
+:root {
+  --cor-primaria: #4CAF50;  /* Cor principal */
+  --cor-secundaria: #F44336;  /* Cor de alerta */
+  --cor-fundo: #f9f9f9;  /* Cor de fundo */
+  --cor-texto: #333;  /* Cor do texto */
+}
+
+/* Estilo global */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
 }
 
+/* Cabeçalho */
 header {
-  background-color: #333;
+  background-color: var(--cor-primaria);
   color: white;
-  padding: 10px 0;
+  padding: 20px;
 }
 
-header nav ul {
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.logo img {
+  width: 150px;
+}
+
+.menu {
+  display: flex;
   list-style: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  gap: 1.5rem;
 }
 
-header nav ul li {
-  display: inline-block;
-  margin: 0 20px;
+.menu li {
+  position: relative;
 }
 
-header nav ul li a {
+.consult-button {
+  background-color: var(--cor-secundaria);
   color: white;
-  text-decoration: none;
-  font-size: 18px;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.hero {
-  background-color: #222;
-  color: white;
+/* Cards de tratamentos */
+.tratamentos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.tratamento-card {
   text-align: center;
-  padding: 50px 0;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.treatments-gallery, .treatments-list {
-  text-align: center;
-  padding: 50px 10px;
-}
-
-.treatment-card {
-  display: inline-block;
-  margin: 15px;
-  width: 250px;
-}
-
-.treatment-card img {
+.tratamento-card img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
-.treatment-card h3 {
-  color: #333;
+.detail-link {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
+/* Formulário */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: var(--cor-secundaria);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Rodapé */
 footer {
   background-color: #333;
   color: white;
-  padding: 10px;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
-footer .social-links a {
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.social-media a {
   color: white;
-  margin: 0 10px;
+  margin: 0 0.5rem;
   text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-links li {
+  list-style: none;
+  display: inline;
+}
+
+/* Mensagens de feedback */
+.alert-message {
+  padding: 10px;
+  background-color: #e0f7fa;
+  border: 1px solid #00796b;
+  color: #00796b;
+  border-radius: 5px;
+  margin-top: 20px;
 }
