@@ -1,9 +1,8 @@
-package com.example.controle.model;
+package com.santiClinic.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Tratamento {
@@ -12,12 +11,27 @@ public class Tratamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    @Column(nullable = false)
+    @NotNull
+    @Size(min = 3, max = 100)
+    private String titulo;
+
+    @Column(nullable = false)
+    @NotNull
+    @Size(min = 5, max = 255)
     private String descricao;
-    private String imagemUrl;
+
+    @Column(nullable = false)
+    @NotNull
+    @Size(min = 10, max = 255)
+    private String imagem;
+
+    @Column(nullable = false)
+    @NotNull
+    @Size(min = 5, max = 500)
+    private String detalhes;
 
     // Getters e Setters
-
     public Long getId() {
         return id;
     }
@@ -26,12 +40,12 @@ public class Tratamento {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescricao() {
@@ -42,22 +56,19 @@ public class Tratamento {
         this.descricao = descricao;
     }
 
-    public String getImagemUrl() {
-        return imagemUrl;
+    public String getImagem() {
+        return imagem;
     }
 
-    public void setImagemUrl(String imagemUrl) {
-        this.imagemUrl = imagemUrl;
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
-    // Método toString (opcional, ajuda no debug)
-    @Override
-    public String toString() {
-        return "Tratamento{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", imagemUrl='" + imagemUrl + '\'' +
-                '}';
+    public String getDetalhes() {
+        return detalhes;
+    }
+
+    public void setDetalhes(String detalhes) {
+        this.detalhes = detalhes;
     }
 }
